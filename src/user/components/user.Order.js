@@ -29,7 +29,7 @@ export const orders = async (req, res) => {
 
     const decoded = verifyToken(token, process.env.SECRETKEY);
     const username = decoded.username;
-    const UserBalance = await User.findOne({ where: { username } });
+    let UserBalance = await User.findOne({ where: { username } });
     const userId = UserBalance.id;
     const ProductPrice = await Products.findOne({where: { id }});
     const sum = ProductPrice.price * count;
@@ -38,6 +38,8 @@ export const orders = async (req, res) => {
       return;
     }
 
+    await UserBalance.update({balance: UserBalance.balance -= sum})
+    
     const order = await Order.create({
       count: count,
       statuss: true,

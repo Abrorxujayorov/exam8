@@ -6,6 +6,7 @@ import { signup } from './user/authorization/register.js'
 import { productorder, userRouter } from './user/routers/userRouter.js'
 import { login } from './user/authorization/login.js'
 import { productRouter } from './admins/adminWork.js'
+import path from 'path'
 
 
 
@@ -25,6 +26,7 @@ async function startserver () {
         app.use('/users', login);
         app.use("/users", userRouter);
         app.use(productRouter);
+        app.use(express.static(path.join(path.resolve(),'uploads')))
         app.use(productorder);
 
 

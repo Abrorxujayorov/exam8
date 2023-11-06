@@ -18,6 +18,7 @@ User.init(
       },
       gmail: {
         type: DataTypes.STRING,
+        unique: true,
         validate: { isEmail: true },
       },
       password: {

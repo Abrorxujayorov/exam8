@@ -11,10 +11,16 @@ export const genToken = (payload, key) => {
 };
 
 
-
 export const verifyToken = (token, secretkey ) => {
-    const decoded = jwt.verify(token, secretkey);
-    return decoded;
+    try {
+        const decoded = jwt.verify(token, secretkey);
+        return decoded;
+    } catch (error) {
+        if (error instanceof jwt.JsonWebTokenError) {
+            res.status(404).json({ERROR: "invalet Token"})
+        }
+        console.log(error.message);
+    }
 }
 
 

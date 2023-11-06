@@ -20,8 +20,20 @@ Products.init ({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    catigory: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    time: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    statica:{
+      type: DataTypes.FLOAT,
+      defaultValue: 0
+    } ,
     price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         
     }

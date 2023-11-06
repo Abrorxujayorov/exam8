@@ -28,7 +28,7 @@ signup.post("/signup", async (req, res) => {
       balance: 100000000,
     });
     const payload = {
-      username,
+      username: newUser.username,
       isAdmin: newUser.id == adminsId ? true : false,
     };
     const token = genToken(payload, process.env.SECRETKEY);
